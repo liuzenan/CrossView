@@ -8,14 +8,7 @@ Ext.define('CrossView.view.ChatPage',{
 	],
 	config:{
 		navigationBar: {
-			hidden: true,
-		    items: [
-		        {
-		            xtype: 'button',
-		            text: 'Options',
-		            align: 'right'
-		        }
-		    ]
+			hidden: true
 		},
 		items:[
 				{
@@ -36,7 +29,7 @@ Ext.define('CrossView.view.ChatPage',{
 		],
         listeners: [{
         	delegate: "#conversationbtn",
-        	event: "singletap",
+        	event: "tap",
         	fn:"onConversationBtnTap"
         }]
 	},

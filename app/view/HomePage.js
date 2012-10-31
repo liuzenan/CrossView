@@ -67,9 +67,14 @@ Ext.define('CrossView.view.HomePage',{
                 {
                     xtype:'list',
                     itemTpl: new Ext.Template(
-                        '<img src="resources/icons/Icon.png">'
+                        '<img src="resources/icons/Icon.png" width="60" height="60"/>',
+                        '<span class="newpost_text">',
+                            '<h4>Bob Trololol has posted to you</h4>',
+                            '<p>3 hours ago near the British Museum, London</p>',
+                        '</span>'
                     ),
-
+                    store: 'NewPosts',
+                    scrollable:false
                 }
                 ]
 

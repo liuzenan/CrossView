@@ -9,7 +9,7 @@ Ext.application({
 
     models:["User", "Login"],
     controllers:["UserCtrl","NavCtrl"],
-    stores:['Users','Invitation','Featured'],
+    stores:['Users','Invitation','Featured','NewPosts'],
 
     views: [
     'Welcome',

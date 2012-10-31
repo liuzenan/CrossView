@@ -1,16 +1,39 @@
 Ext.define('CrossView.view.ConversationPage',{
-	extend: 'Ext.Container',
+	extend: 'Ext.navigation.View',
 	requires:[
 		'Ext.Button'
 	],
 	xtype:'conversationpage',
 	config:{
-		title: 'Conversation',
+		navigationBar: {
+		    items: [
+		        {
+		            xtype: 'button',
+		            text: 'Options',
+		            align: 'right'
+		        },
+		        {
+		            xtype: 'button',
+		            id: 'conversationbackbtn',
+		            cls:'x-button-back',
+		            text: 'Back',
+		            align: 'left'
+		        }
+		    ],
+		},
 		items:[
 			{
-				xtype:'button',
-				text:'open post'
+				title: 'Conversation'
 			}
-		]
-	}
+		],
+		listeners: [{
+        	delegate: "#conversationbackbtn",
+        	event: "tap",
+        	fn:"onConversationBackBtnTap"
+        }]
+	},
+    onConversationBackBtnTap: function(){
+    	console.log("onConversationBackBtnTap");
+    	this.fireEvent("ConversationBackCmd",this);
+    }
 });
