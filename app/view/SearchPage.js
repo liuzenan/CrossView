@@ -4,7 +4,8 @@ Ext.define('CrossView.view.SearchPage',{
 	requires:[
         'Ext.tab.Panel',
         'Ext.field.Search',
-        'Ext.Container'
+        'Ext.Container',
+        'Ext.List'
 	],
 	config:{
         navigationBar:{
@@ -40,7 +41,17 @@ Ext.define('CrossView.view.SearchPage',{
                         scrollable :true,
                         items:[
                                 {
-
+                                    xtype:'list',
+                                    cls:'search-people-list',
+                                    itemTpl: new Ext.Template(
+                                        '<img src="" class="search-people-profile" />',
+                                        '<div>',
+                                            '<h3>{firstname} {lastname}</h3>',
+                                            '<p>234 posts, 12 conversations</p>',
+                                        '</div>'
+                                    ),
+                                    store:'SearchPeople',
+                                    scrollable:false
                                 }
                             ]
                  
@@ -51,7 +62,14 @@ Ext.define('CrossView.view.SearchPage',{
                         scrollable :true,
                         items:[
                                 {
-
+                                    xtype:'list',
+                                    cls:'search-location-list',
+                                    itemTpl: new Ext.Template(
+                                        '<h3>{name}</h3>',
+                                        '<p>234 posts, 12 conversations</p>'
+                                    ),
+                                    store:'SearchLocations',
+                                    scrollable:false
                                 }
                             ]
 
