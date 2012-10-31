@@ -1,15 +1,32 @@
 Ext.define('CrossView.view.AddUser',{
-	extend: 'Ext.Container',
+	extend: 'Ext.navigation.View',
 	requires:[
 		'Ext.Button',
 		'Ext.tab.Panel',
-		'Ext.field.Search'
+		'Ext.field.Search',
+		'CrossView.view.InviteUserList'
 	],
 	xtype:'adduserpage',
 	config:{
-		title: 'Add User',
+		navigationBar: {
+		    items: [
+		        {
+		            xtype: 'button',
+		            text: 'Done',
+		            align: 'right'
+		        },
+		        {
+		            xtype: 'button',
+		            id: 'conversationbackbtn',
+		            cls:'x-button-back',
+		            text: 'Back',
+		            align: 'left'
+		        }
+		    ],
+		},
 		items:[
 			{
+				title: 'Add User',
 				xtype:'tabpanel',
 				style:{
                             'position':'absolute',
@@ -22,12 +39,16 @@ Ext.define('CrossView.view.AddUser',{
 	                    pack: 'center'
 	                }
 	            },
+
 	            items:[
 	            	{
-	            		title: 'Recent'
+	            		title: 'Recent',
+	            		xclass: 'CrossView.view.InviteUserList',
+	            		scrollable:true
 	            	},
 	            	{
 	            		title: 'Search',
+	            		scrollable:true,
 	            		items:[
 	            			{
 	            				xtype:'searchfield',
@@ -35,13 +56,15 @@ Ext.define('CrossView.view.AddUser',{
 	            				placeHolder: 'Search'
 	            			},
 	            			{
-	            				xtype:'button',
-	            				text:'open profile'
+	            				xclass: 'CrossView.view.InviteUserList',
+	            				scrollable:false
 	            			}
 	            		]
 	            	},
 	            	{
-	            		title: 'Friends'
+	            		title: 'Friends',
+	            		scrollable:true,
+	            		xclass: 'CrossView.view.InviteUserList'
 	            	}
 	            ]
 			}

@@ -9,7 +9,7 @@ Ext.application({
 
     models:["User", "Login"],
     controllers:["UserCtrl","NavCtrl"],
-    stores:['Users','Invitation','Featured','NewPosts','Conversations','ConversationPosts'],
+    stores:['Users','Invitation','Featured','NewPosts','Conversations','ConversationPosts','InviteUsers'],
 
     views: [
     'Welcome',
@@ -56,7 +56,7 @@ Ext.application({
        		xtype:"welcomeview"
         };
        var homeView = {
-    		   xtype: "homeview"
+    		   xtype: "adduserpage"
        };
         Ext.Viewport.add(homeView);
     },

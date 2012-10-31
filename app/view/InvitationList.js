@@ -8,7 +8,7 @@ Ext.define('CrossView.view.InvitationList',{
 
 	config:{
 		useComponents: true,
-		cls: 'inivitation-list',
+		cls: 'invitation-list',
 		store:'Invitation',
 		defaultType: 'invitationitem'
 	}
