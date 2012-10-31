@@ -20,7 +20,10 @@ Ext.define('CrossView.view.InvitationItem',{
 			align: 'center'
 		},
 
-		image: true,
+		image: {
+			width:60,
+			height:60
+		},
 
 		firstName:{
 			cls:'profile-first-name'

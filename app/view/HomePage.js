@@ -5,7 +5,8 @@ Ext.define('CrossView.view.HomePage',{
         'Ext.Button',
         'Ext.tab.Panel',
         'CrossView.view.InvitationList',
-        'Ext.DataView'
+        'Ext.DataView',
+        'Ext.List'
     ],
     config:{
         navigationBar:{
@@ -64,9 +65,9 @@ Ext.define('CrossView.view.HomePage',{
                     html: '<h2><span>0</span> New Posts</h2>'
                 },
                 {
-                    xtype:'dataview',
+                    xtype:'list',
                     itemTpl: new Ext.Template(
-                        
+                        '<img src="resources/icons/Icon.png">'
                     ),
 
                 }

@@ -3,6 +3,7 @@ Ext.define('CrossView.model.User', {
     config: {
         fields: [
            // { name: 'id', type: 'int' },
+           "profilePic",
             { name: 'fb_id', type: 'string' },	
             { name: 'firstname', type: 'string'},
             { name: 'lastname',  type: 'string'},
