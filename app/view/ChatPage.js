@@ -4,7 +4,8 @@ Ext.define('CrossView.view.ChatPage',{
 	requires:[
 		'Ext.field.Search',
 		'Ext.Button',
-		'Ext.Container'
+		'Ext.Container',
+		'Ext.DataView'
 	],
 	config:{
 		navigationBar: {
@@ -13,6 +14,7 @@ Ext.define('CrossView.view.ChatPage',{
 		items:[
 				{
 					xtype:'container',
+					scrollable:true,
 					items:[
 						{
 							xtype:'searchfield',
@@ -20,9 +22,25 @@ Ext.define('CrossView.view.ChatPage',{
 							placeHolder:'Search conversation'
 						},
 						{
-							xtype:'button',
-							text:'open conversation',
-							itemId: 'conversationbtn'
+							xtype:'dataview',
+							scrollable:false,
+							itemTpl: new Ext.XTemplate(
+								'<div class="chat_photo">',
+									'<h2 class="cover_caption"><h2>',
+								'</div>',
+								'<tpl for=".">',
+									'<img src="" />',
+								'</tpl>',
+								'<tpl for=".">',
+									'<h4>Alice, Bob, David</h4>',
+									'<p>Last updated 2 hours ago near Singapore</p>',
+								'</tpl>',
+								'<div><span>5</span>Posts</div>',
+								'<div><span>2</span>Unread</div>',
+								'<div><span>25</span>Locations</div>'
+							),
+							itemId: 'conversationbtn',
+							store:'Conversations'
 						}
 				]			
 			}
