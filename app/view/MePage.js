@@ -5,7 +5,9 @@ Ext.define('CrossView.view.MePage',{
         'Ext.tab.Panel',
         'Ext.XTemplate',
         'Ext.Button',
-        'Ext.Container'
+        'Ext.Container',
+        'Ext.DataView',
+        'Ext.navigation.View'
 	],
 	config:{
         scrollable: true,
@@ -66,14 +68,30 @@ Ext.define('CrossView.view.MePage',{
                                 title: 'Recent',
                                 items:[
                                 {
-                                    
-                                }
+                                    xtype:'dataview',
+                                    itemTpl: new Ext.Template(
+                                        '<span class="profile-post-title">3 hours ago near British Museum, UK</span>',
+                                        '<div class="profile-post-image">',
+                                        '<div class="post_stats">',
+                                            '<span class="post_like">21</span>',
+                                            '<span class="post_view">120</span>',
+                                        '</div>',
+                                        '</div>'
+                                    ),
+                                    store:'RecentPosts'
+                                },
+                                
                             ]
                             },
                             {
                                 title: 'Categories',
                                 items:[
                                 {
+                                    xtype:'navigationview',
+                                    navigationBar:{
+
+                                    },
+                                    
 
                                 }
                             ]

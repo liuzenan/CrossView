@@ -18,7 +18,8 @@ Ext.define("CrossView.controller.UserCtrl", {
 			},
 			signUpView: {
 				// Command fired by the view SignUp.js
-				signUpCommand: "onSignUpCommand"
+				signUpCommand: "onSignUpCommand",
+				showStatesCommand: "onShowStatesCommand"
 			},
 			homeView: {
 				//commands
@@ -34,6 +35,59 @@ Ext.define("CrossView.controller.UserCtrl", {
 		var homeView = this.getHomeView();
 		//homeView.setRecord(record);
 		Ext.Viewport.animateActiveItem(homeView, this.slideLeftTransition);
+	},
+	getStates: function(country){
+		var httpxml;
+		try
+		  {
+		  // Firefox, Opera 8.0+, Safari
+		  httpxml=new XMLHttpRequest();
+		  }
+		catch (e)
+		  {
+		  // Internet Explorer
+				  try
+							{
+						 httpxml=new ActiveXObject("Msxml2.XMLHTTP");
+							}
+					catch (e)
+							{
+						try
+					{
+					httpxml=new ActiveXObject("Microsoft.XMLHTTP");
+					 }
+						catch (e)
+					{
+					alert("Your browser does not support AJAX!");
+					return false;
+					}
+					}
+		  }
+		function stateck() 
+		{
+			if(httpxml.readyState==4)
+			{
+		
+				var states=JSON.parse(httpxml.responseText);
+				var options = new Array();
+
+				for (i=0;i<states.length;i++)
+				{
+					options[i]={text:states[i]['name'], value:states[i]['id']};
+					if(states.length <=1)
+						Ext.getCmp('states').disabled = "disabled";
+					else
+						Ext.getCmp('states').disabled = false;
+				} 
+				Ext.getCmp('states').setOptions(options);
+			}
+		}
+		
+		var url="http://54.251.40.149/functions/getCountries.php";
+		url=url+"?country="+country;
+		httpxml.onreadystatechange=stateck;
+		httpxml.open("GET",url,true);
+		httpxml.send(null);
 	},
 	
 	//Commands
@@ -58,8 +112,7 @@ Ext.define("CrossView.controller.UserCtrl", {
 		newUser.set("password", newValues.password);
 		newUser.set("gender", newValues.gender);
 		newUser.set("email", newValues.email);
-		newUser.set("location", 123);         //??????????????????????????????????????????????????????????????
-		
+		newUser.set("location", newValues.state);       		
 		var errors = newUser.validate(); // validate function provided by sencha touch model
 		
 		if(!errors.isValid()){
@@ -73,7 +126,7 @@ Ext.define("CrossView.controller.UserCtrl", {
 				var proxy = newUser.getProxy(),
 					reader = proxy.getReader(),
 					raw = reader.rawData;
-				Ext.Msg.alert("", "failure: " + reader.getMessage(raw), Ext.emptyFn);
+				Ext.Msg.alert("", reader.getMessage(raw), Ext.emptyFn);
 			},
 			success: function(record, operation){
 				Ext.Msg.alert("", record.get('firstname') + " Registration successful!", Ext.emptyFn);
@@ -116,12 +169,18 @@ Ext.define("CrossView.controller.UserCtrl", {
 				var proxy = login.getProxy(),
 					reader = proxy.getReader(),
 					raw = reader.rawData;
-				Ext.Msg.alert("", "failure: " + reader.getMessage(raw), Ext.emptyFn);
+				Ext.Msg.alert("", reader.getMessage(raw), Ext.emptyFn);
 			},
 			success: function(){
 				Ext.Msg.alert("","Login successful!", Ext.emptyFn);
 				this.activateHomeView();
 			}
 		},this);
+	},
+	onShowStatesCommand: function(){
+		console.log("onShowStatesCommand");
+		var signUpView = this.getSignUpView();
+		var newValues=signUpView.getValues();
+		this.getStates(newValues.country);
 	}
 });

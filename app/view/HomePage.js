@@ -39,9 +39,9 @@ Ext.define('CrossView.view.HomePage',{
                                 '</div>',
                             '</div>',
                             '<div class="featured_post_image">',
-                                '<div class="featured_post_stats">',
-                                    '<span class="featured_post_like">21</span>',
-                                    '<span class="featured_post_view">120</span>',
+                                '<div class="post_stats">',
+                                    '<span class="post_like">21</span>',
+                                    '<span class="post_view">120</span>',
                                 '</div>',
                             '</div>',
                         '</div>'

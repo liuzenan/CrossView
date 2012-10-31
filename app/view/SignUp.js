@@ -56,38 +56,14 @@ Ext.define("CrossView.view.SignUp", {
                         ]
                     },
                     {
-                        xtype: 'textfield',
-                        name: 'state',
-                        options:[
-                            {text: 'State', value:'0'}
-                        ]
-                    },
-                /*    {
-                        xtype: 'autocompletefield',
+                        xtype: 'selectfield',
                         name: 'country',
-                        placeHolder:'Country',
-                        value:'',
-                        config:{
-                        	proxy:{
-                        		type: 'ajax',
-                        		url:'http://54.251.40.149/functions/getCountries.php',
-                        		reader:{
-                        			type:'json',
-                        			rootProperty:''
-                        		}
-                        	},
-                        	resultHeight:300,
-                        		needleKey:'term',
-                        		labelKey:'name'
-                        }
-                        
-                    },*/
+                        id: 'countries',
+                    },
                     {
-                        xtype: 'textfield',
+                        xtype: 'selectfield',
                         name: 'state',
-                        options:[
-                            {text: 'State', value:'0'}
-                        ]
+                        id: 'states'
                     }
                 ]
             },
@@ -105,13 +81,21 @@ Ext.define("CrossView.view.SignUp", {
         	delegate: "#signUpBtn",
         	event: "tap",
         	fn:"onSignUpBtnTap"
+        },
+        {
+        	delegate:"#countries",
+        	event:"change",
+        	fn:"onCountrySelected"
         }]
 
     },
-    
-    // Capture tap events and fire them to controller as commands
+    // Capture events and fire them to controller as commands
     onSignUpBtnTap: function(){
     	console.log("signUpCommand");
     	this.fireEvent("signUpCommand",this);
+    },
+    onCountrySelected: function(){
+    	console.log("showStatesCommand");
+    	this.fireEvent("showStatesCommand",this);
     }
 });
