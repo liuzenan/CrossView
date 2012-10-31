@@ -47,7 +47,7 @@ Ext.define('CrossView.view.ChatPage',{
 		],
         listeners: [{
         	delegate: "#conversationbtn",
-        	event: "tap",
+        	event: "itemsingletap",
         	fn:"onConversationBtnTap"
         }]
 	},
