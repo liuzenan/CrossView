@@ -133,11 +133,6 @@ Ext.define('CrossView.view.MePage',{
             delegate: "#profile-tabpanel",
             event: "activeitemchange",
             fn:"onProfileTapChange"
-        },
-        {
-            delegate:'#profile-page-root',
-            event:"initialize",
-            fn:"onPageLoad"
         }
         ]
 	},
@@ -169,10 +164,11 @@ Ext.define('CrossView.view.MePage',{
         }
     },
 
-    onPageLoad: function(list,opts){
-        var childcount = Ext.select('.recentpanel .x-dataview-container').elements[0].childElementCount;
-        var height = childcount*80;
-        console.log(childcount);
-        Ext.select('.profile-page-root .x-navigationview-inner').setHeight(height);
+    initialize: function(){
+        console.log();
+        //var childcount = Ext.select('.recentpanel').elements[0].childElementCount;
+        //var height = childcount*80;
+        //console.log(childcount);
+        //this.innerElement.dom.style.height = height+215+"px";
     }
 });
