@@ -5,7 +5,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    models:["User", "Login"],
+    models:["User", "Login","Category","Conversation","Location","Post"],
     controllers:["UserCtrl","NavCtrl"],
     stores:[
     'Users',
@@ -17,7 +17,8 @@ Ext.application({
     'InviteUsers',
     'SearchPeople',
     'SearchLocations',
-    'RecentPosts'
+    'RecentPosts',
+    'Categories'
     ],
 
     views: [
