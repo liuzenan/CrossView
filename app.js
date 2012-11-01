@@ -69,7 +69,9 @@ Ext.application({
        var homeView = {
     		   xtype: "homeview"
        };
+       
         Ext.Viewport.add(homeView);
+
     },
     
     //Helper functions

@@ -2,7 +2,8 @@ Ext.define('CrossView.view.ConversationPage',{
 	extend: 'Ext.navigation.View',
 	requires:[
 		'Ext.Button',
-		'Ext.DataView'
+		'Ext.DataView',
+		'Ext.ActionSheet'
 	],
 	xtype:'conversationpage',
 	config:{
@@ -11,12 +12,30 @@ Ext.define('CrossView.view.ConversationPage',{
 		        {
 		            xtype: 'button',
 		            text: 'Options',
-		            align: 'right'
+		            align: 'right',
+		            handler:function(){
+		            	if(!this.actions){
+		            		this.actions = Ext.Viewport.add({
+		            			xtype:'panel',
+		            			hideOnMaskTap : true,
+		            			modal:true,
+		            			top:60,
+		            			right:0,
+		            			defaultType:'button',
+		            			layout:{
+		            				type:'vbox',
+		            				align:'stretch'
+		            			}
+
+		            		});
+		            	}
+		            	this.actions.show();
+		            }
 		        },
 		        {
 		            xtype: 'button',
 		            id: 'conversationbackbtn',
-		            cls:'x-button-back',
+		            ui:'back',
 		            text: 'Back',
 		            align: 'left'
 		        }
@@ -27,6 +46,42 @@ Ext.define('CrossView.view.ConversationPage',{
 				title: 'Conversation',
 				scrollable:true,
 				items:[
+				{
+					xtype:'button',
+					docked:'top',
+					text:'New Post',
+					handler:function(){
+						if(!this.actions){
+							this.actions = Ext.Viewport.add({
+								xtype: 'actionsheet',
+								items:[
+									{
+										text:'Take Photo',
+										scope:this,
+										handler:function(){
+											this.actions.hide();
+										}
+									},
+									{
+										text:"Upload from Library",
+										scope:this,
+										handler:function(){
+											this.actions.hide();
+										}
+									},
+									{
+										text:'Cancel',
+										scope:this,
+										handler:function(){
+											this.actions.hide();
+										}
+									}
+								]
+							});
+						}
+						this.actions.show();
+					}
+				},
 					{
 						xtype:'dataview',
 						scrollable:false,

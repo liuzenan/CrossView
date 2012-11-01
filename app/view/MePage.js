@@ -1,7 +1,7 @@
 Ext.define('CrossView.view.MePage',{
-	extend: 'Ext.navigation.View',
-	xtype: 'mepage',
-	requires:[
+    extend: 'Ext.navigation.View',
+    xtype: 'mepage',
+    requires:[
         'Ext.tab.Panel',
         'Ext.XTemplate',
         'Ext.Button',
@@ -9,13 +9,13 @@ Ext.define('CrossView.view.MePage',{
         'Ext.DataView',
         'Ext.navigation.View',
         'Ext.List'
-	],
-	config:{
+    ],
+    config:{
         scrollable: true,
         navigationBar:{
             hidden:true
         },
-		items:[
+        items:[
         {
             xtype : 'container',
             scrollable: false,
@@ -128,7 +128,7 @@ Ext.define('CrossView.view.MePage',{
             ]            
         }
 
-		],
+        ],
         listeners: [
         {
             delegate: "#profile-tabpanel",
@@ -136,7 +136,7 @@ Ext.define('CrossView.view.MePage',{
             fn:"onProfileTapChange"
         }
         ]
-	},
+    },
 
     onProfileTapChange: function(container, newCard, oldCard){
         var childcount, height;
