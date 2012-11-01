@@ -1,6 +1,6 @@
 $base-color: #FFFFFF;
 $tabs-bottom-radius: 0;
-
+$tabs-top-radius:0;
 
 @import 'sencha-touch/default/all';
 
@@ -53,7 +53,6 @@ $tabs-bottom-radius: 0;
 }
 .welcome-form{
 	width:215px;
-	font-weight:700;
 }
 
 .welcome-tabbar{
@@ -111,4 +110,86 @@ $tabs-bottom-radius: 0;
 
 .x-form-fieldset .x-field.state{
 	border-left:1px solid #ddd !important;
+}
+
+//Homepage
+
+.hometab{
+	height:46px !important;
+	background:url(../images/tabbar.png) !important;
+	background-size:32px 46px;
+}
+
+.hometab .x-tab-active{
+	background:none !important;
+	border-bottom:none !important;
+	box-shadow:none !important;
+	-webkit-box-shadow:none !important;
+}
+
+.hometab .x-tab{
+	width:20% !important;
+	border-right:1px solid #222;
+}
+
+.hometab .x-tab:last-child{
+	border-right:none;
+}
+
+.x-tabbar.x-docked-top{
+	padding: 0 !important;
+}
+
+.homepage-tabbar .x-tab{
+	width:50%;
+	height:auto !important;
+}
+
+.featured_post{
+	width:90%;
+	margin: 1.4em 5%;
+	height:180px;
+	position:relative;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+	-webkit-border-bottom-right-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+	box-shadow: 0 0 3px gray;
+	-webkit-box-shadow: 0 0 3px gray;
+}
+
+.featured_post_image{
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+	-webkit-border-bottom-right-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+}
+
+.featured_post_title{
+	height:36px;
+	background:white;
+}
+
+.feature_post_title{
+	padding:0.4em;
+}
+
+.feature_post_title h3{
+	font-size:1em;
+	font-weight:700;
+	margin:0 !important;
+}
+
+.feature_post_title p{
+	margin:0;
+	font-size:0.6em;
+	color:#666;
+}
+
+.featured_post_image{
+	position: absolute;
+	top: 36px;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }

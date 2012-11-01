@@ -138,9 +138,9 @@ $tabs-top-height: $global-row-height - .8em;
 
     .x-tab {
       position: relative;
-      padding: (($tabs-top-height - 1em) / 2) .8em;
+      padding: (($tabs-top-height - 1em)) .8em;
       height: $tabs-top-height;
-      @if $include-border-radius { @include border-radius($tabs-top-height / 2); }
+     // @if $include-border-radius { @include border-radius($tabs-top-height / 2); }
     }
 
     .x-button-label {

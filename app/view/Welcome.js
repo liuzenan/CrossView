@@ -12,6 +12,7 @@ Ext.define("CrossView.view.Welcome", {
             }
         },
         fullscreen:true,
+        styleHtmlContent: true,
         scrollable:false,
         items: [
                 {

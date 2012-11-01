@@ -17,7 +17,6 @@ Ext.define("CrossView.view.SignUp", {
         cls:'welcome-tab',
         iconCls: 'signup',
         scrollable:false,
-        styleHtmlContent: true,
         layout:{
             type:'vbox',
             pack:'start',

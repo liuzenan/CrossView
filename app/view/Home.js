@@ -10,6 +10,7 @@ Ext.define("CrossView.view.Home", {
     config: {
     tabBar: {
         docked: 'bottom',
+        cls:'hometab',
         layout: {
             pack: 'center',
             type:'hbox',

@@ -6,7 +6,6 @@ Ext.define('CrossView.view.Tour', {
 		title: 'Tour',
 		iconCls: 'myinfo',
 		scrollable:false,
-		styleHtmlContent: true,
         items: [
             {
             	// insert elements for tour here    

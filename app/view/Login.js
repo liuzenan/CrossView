@@ -13,7 +13,6 @@ Ext.define("CrossView.view.Login", {
         title: 'Login',
         cls:'welcome-tab',
         iconCls: 'myuser',
-        styleHtmlContent: true,
         scrollable:false,
         layout:{
             type:'vbox',
