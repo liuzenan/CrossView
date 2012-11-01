@@ -1,3 +1,7 @@
+$base-color: #FFFFFF;
+$tabs-bottom-radius: 0;
+
+
 @import 'sencha-touch/default/all';
 
 // You may remove any of the following modules that you
@@ -17,3 +21,94 @@
 @include sencha-msgbox;
 
 // Your custom code goes here...
+@include pictos-iconmask('speech');
+@include pictos-iconmask('compose3');
+@include pictos-iconmask('myhome');
+@include pictos-iconmask('myuser');
+@include pictos-iconmask('mysearch');
+@include pictos-iconmask('camera');
+@include pictos-iconmask('myinfo');
+@include pictos-iconmask('signup');
+// login page
+
+.welcome-tab{
+	background: url(../images/welcome-background.png);
+	background-size: 256px 256px;
+}
+
+.login-logo{
+	margin-bottom:2em;
+}
+
+.welcome-text{
+	font-family: Georgia, serif;
+	font-size: 0.7em;
+	font-style: italic;
+	color:#666;
+	text-align:center;
+	line-height: 2em;
+}
+.welcome-comp, .welcome-form{
+	margin-bottom: 1em;
+}
+.welcome-form{
+	width:215px;
+	font-weight:700;
+}
+
+.welcome-tabbar{
+	background: #353535;
+	height:55px !important;
+	background: -moz-linear-gradient(top,  #353535 0%, #464646 13%, #464646 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#353535), color-stop(13%,#464646), color-stop(100%,#464646));
+	background: -webkit-linear-gradient(top,  #353535 0%,#464646 13%,#464646 100%);
+	background: -o-linear-gradient(top,  #353535 0%,#464646 13%,#464646 100%);
+	background: -ms-linear-gradient(top,  #353535 0%,#464646 13%,#464646 100%);
+	background: linear-gradient(to bottom,  #353535 0%,#464646 13%,#464646 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#464646',GradientType=0 );
+}
+.welcome-tabbar .x-tab{
+	background: none !important;
+	border:none !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	text-shadow: none !important;
+	width:33.33333333333% !important;
+}
+
+.welcome-tabbar .x-button-label, .welcome-tabbar .x-tab-pressed .x-button-label{
+	font-size:11px !important;
+	color:#666;
+}
+
+.welcome-tabbar .x-tab-active .x-button-label{
+	color:white !important;
+}
+
+//sign up
+
+.x-form-fieldset .x-field.firstname{
+	-webkit-border-top-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.x-form-fieldset .x-field.lastname{
+	border-left:1px solid #ddd !important;
+	border-bottom:1px solid #ddd !important;
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.x-form-fieldset .x-field.country{
+	border-bottom: 0;
+	-webkit-border-bottom-left-radius: 0.4em;
+	border-bottom-left-radius: 0.4em;
+	-webkit-border-bottom-right-radius: 0.4em;
+	border-bottom-right-radius: 0.4em;
+}
+
+.x-form-fieldset .x-field.state{
+	border-left:1px solid #ddd !important;
+}

@@ -11,15 +11,16 @@ Ext.define("CrossView.view.Home", {
     tabBar: {
         docked: 'bottom',
         layout: {
-            pack: 'center'
+            pack: 'center',
+            type:'hbox',
+            align:'stretch'
         }
     },
         styleHtmlContent: true,
         fullscreen: true,
         items: [
             {
-                iconCls: 'home',
-
+                iconCls: 'myhome',
                 items:[
                     {
                         xtype:'homepage',
@@ -33,7 +34,7 @@ Ext.define("CrossView.view.Home", {
 
             },
             {
-                iconCls: 'chat',
+                iconCls: 'speech',
                 items:[
                     {
                         xtype: 'chatpage',
@@ -46,7 +47,7 @@ Ext.define("CrossView.view.Home", {
                 ]
             },
             {
-                iconCls: 'photo',
+                iconCls: 'camera',
                 items:[
                     {
                         xtype:'uploadpage',
@@ -59,7 +60,7 @@ Ext.define("CrossView.view.Home", {
                 ]
             },
             {
-                iconCls: 'search',
+                iconCls: 'mysearch',
                 items:[
                     {
                         xtype:'searchpage',
@@ -72,7 +73,7 @@ Ext.define("CrossView.view.Home", {
                 ]
             },
             {
-                iconCls: 'user',
+                iconCls: 'myuser',
                 items:[
                 {
                     xtype:'mepage',

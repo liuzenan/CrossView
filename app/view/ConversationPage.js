@@ -25,7 +25,15 @@ Ext.define('CrossView.view.ConversationPage',{
 		            			layout:{
 		            				type:'vbox',
 		            				align:'stretch'
-		            			}
+		            			},
+		            			items:[
+		            				{
+		            					text:'Invite Users'
+		            				},
+		            				{
+		            					text:'Leave Conversation'
+		            				}
+		            			]
 
 		            		});
 		            	}

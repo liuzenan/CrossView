@@ -10,32 +10,55 @@ Ext.define("CrossView.view.SignUp", {
                'Ext.form.Select',
                'Ext.Img',
                'Ext.Button',
+               'Ext.Container'
     ],
     config: {
         title: 'Sign up',
-        iconCls: 'compose',
+        cls:'welcome-tab',
+        iconCls: 'signup',
         scrollable:false,
         styleHtmlContent: true,
+        layout:{
+            type:'vbox',
+            pack:'start',
+            align:'center'
+        },
         items: [
             {
+                cls:'welcome-comp',
                 html: [
-                '<img height=50 src="resources/images/logo_h.png" />',
-                '<p>Please sign up with your email</p>'
+                '<img class="login-logo" height=50 src="resources/images/logo_h.png" />',
+                '<p class="welcome-text">Please sign up with your email</p>'
                 ].join("")
             },
             {
                 xtype: 'fieldset',
+                cls:'welcome-form',
                 items:[
-                    {   
-                        xtype: 'textfield',
-                        name: 'firstname',
-                        placeHolder: 'First Name'
+                {
+                    xtype:'container',
+                    layout:{
+                        type:'hbox',
+                        align:'center'
                     },
-                    {
-                        xtype: 'textfield',
-                        name: 'lastname',
-                        placeHolder: 'Last Name'                             
-                    },
+                    items:[
+                        {   
+                            xtype: 'textfield',
+                            cls:'firstname',
+                            name: 'firstname',
+                            placeHolder: 'First Name',
+                            flex:1
+                        },
+                        {
+                            xtype: 'textfield',
+                            cls:'lastname',
+                            name: 'lastname',
+                            placeHolder: 'Last Name',
+                            flex:1                
+                        }
+                    ]
+                },
+
                     {
                         xtype: 'emailfield',
                         name: 'email',
@@ -55,26 +78,39 @@ Ext.define("CrossView.view.SignUp", {
                             {text: 'Male', value:'male'}
                         ]
                     },
+                {
+                    xtype:'container',
+                    layout:{
+                        type:'hbox',
+                        align:'center'
+                    },
+                    items:[
                     {
                         xtype: 'selectfield',
+                        cls:'country',
                         name: 'country',
                         id: 'countries',
+                        flex:1
                     },
                     {
                         xtype: 'selectfield',
+                        cls:'state',
                         name: 'state',
-                        id: 'states'
+                        id: 'states',
+                        flex:1
                     }
+                    ]
+                }
+
                 ]
             },
             {
                 xtype: 'button',
                 text: 'Sign up',
-                ui:'action',
                 itemId:"signUpBtn"
             },
             {
-                html: '<p>By tapping "Sign up" above, you are agreeing with CrossView&rsquo;s Terms of Service, and Privacy Policy</p>'
+                html: '<p class="welcome-text">By tapping "Sign up" above, you are agreeing with CrossView&rsquo;s Terms of Service, and Privacy Policy</p>'
             }
         ],
         listeners: [{

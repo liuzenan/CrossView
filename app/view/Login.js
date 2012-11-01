@@ -11,27 +11,39 @@ Ext.define("CrossView.view.Login", {
     ],
     config: {
         title: 'Login',
-        iconCls: 'user',
+        cls:'welcome-tab',
+        iconCls: 'myuser',
         styleHtmlContent: true,
         scrollable:false,
+        layout:{
+            type:'vbox',
+            pack:'start',
+            align:'center'
+        },
         items: [
             {
+                cls:'welcome-comp',
                 html: [
-                '<img height=50 src="resources/images/logo_h.png" />',
-                '<p>Welcome, please sign in to get started</p>'
+                '<img class="login-logo" height=50 src="resources/images/logo_h.png" />',
+                '<p class="welcome-text">Welcome, please sign in to get started.</p>'
                 ].join(""),
             },
             {
-                xtype: 'button',
-                text: 'Sign in in with Facebook'
+                cls:'welcome-comp',
+                html:'<img height=41 src="resources/images/facebook_btn.png" />'
             },
             {
+                cls:'welcome-comp',
                 html : '<img height=20 src="resources/images/or_divider.png" />',
             },
             {
                 xtype: 'formpanel',
+                cls:'welcome-form',
                 scrollable:false,
                 items:[
+                {
+                    xtype:'fieldset',
+                    items:[
                     {   
                         xtype: 'emailfield',
                         name: 'email',
@@ -42,13 +54,14 @@ Ext.define("CrossView.view.Login", {
                         name: 'password',
                         placeHolder: 'Password'                             
                     }
+                    ]
+                }
                 ]
 
             },
             {
                 xtype: 'button',
                 text: 'Login',
-                ui: 'action',
                 itemId: 'LogInBtn'
             }
         ],

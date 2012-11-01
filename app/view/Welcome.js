@@ -2,7 +2,15 @@ Ext.define("CrossView.view.Welcome", {
     extend: 'Ext.tab.Panel',
     xtype: 'welcomeview',
     config: {
-        tabBarPosition: 'bottom',
+        tabBar:{
+            cls:'welcome-tabbar',
+            docked: 'bottom',
+            layout: {
+                pack: 'center',
+                type:'hbox',
+                align:'stretch'
+            }
+        },
         fullscreen:true,
         scrollable:false,
         items: [
