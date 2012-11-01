@@ -54,6 +54,7 @@ Ext.define('CrossView.view.MePage',{
                         scrollable: false,
                         tabBar: {
                             docked: 'top',
+                            itemId:'profile-tabbar',
                             layout: {
                                 pack: 'center'
                             },
@@ -165,10 +166,11 @@ Ext.define('CrossView.view.MePage',{
     },
 
     initialize: function(){
-        console.log();
-        //var childcount = Ext.select('.recentpanel').elements[0].childElementCount;
-        //var height = childcount*80;
+        
+
+        var childcount = this.down('tabpanel').getActiveItem().down('dataview').innerElement.dom.children[0].childElementCount;
+        var height = childcount*80;
         //console.log(childcount);
-        //this.innerElement.dom.style.height = height+215+"px";
+        this.innerElement.dom.style.height = height+215+"px";
     }
 });
