@@ -21,28 +21,28 @@ Ext.define('CrossView.view.InvitationItem',{
 		},
 
 		image: {
-			width:60,
-			height:60
+			cls:'invite-profile',
+			width:56,
+			height:56
 		},
 
 		firstName:{
-			cls:'profile-first-name'
+			cls:'profile-name'
 		},
 
 		lastName:{
-			cls:'profile-last-name',
+			cls:'profile-name',
 			flex:2
 		},
 
 		accept:{
 			cls:'acceptbtn',
-			text:'Accept',
-			flex:1
+			text:'Accept'
 		},
 		ignore:{
-			cls:'ignorebtn',
-			text:'Ignore',
-			flex:1
+			iconCls:'delete',
+			iconMask: true,
+			cls:'ignorebtn'
 		}
 
 	},

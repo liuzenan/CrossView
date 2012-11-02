@@ -29,6 +29,8 @@ Ext.define('CrossView.model.User', {
 	      { type: 'presence', field: 'password', message: 'Please set your password.'},
 	      { type: 'inclusion', field: 'gender', list: ['female', 'male'], message: 'Please select your gender.'},
 	      { type: 'exclusion', field: 'location', list: [1], message: 'Please select your location.'}
-        ]
+        ],
+
+        belongsTo:'CrossView.model.Conversation'
     }
 });

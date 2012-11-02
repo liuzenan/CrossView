@@ -61,23 +61,26 @@ Ext.define('CrossView.view.HomePage',{
                 scrollable: true,
                 items:[
                 {
-                    html: '<h2><span>0</span> New Invitations</h2>'
+                    html: '<h2 class="notif_title"><span id="invitation_count">0</span> New Invitations</h2>'
                 },
                 {
                     xclass: 'CrossView.view.InvitationList',
                     scrollable:false
                 },
                 {
-                    html: '<h2><span>0</span> New Posts</h2>'
+                    html: '<h2 class="notif_title"><span id="new_post_count">0</span> New Posts</h2>'
                 },
                 {
                     xtype:'list',
+                    cls:'notif_newpost',
                     itemTpl: new Ext.Template(
+                        '<div class="newpost_container x-layout-hbox">',
                         '<img src="resources/icons/Icon.png" width="60" height="60"/>',
                         '<span class="newpost_text">',
                             '<h4>Bob Trololol has posted to you</h4>',
                             '<p>3 hours ago near the British Museum, London</p>',
-                        '</span>'
+                        '</span>',
+                        '</div>'
                     ),
                     store: 'NewPosts',
                     scrollable:false
