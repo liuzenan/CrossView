@@ -8,7 +8,7 @@ Ext.define('CrossView.model.Login', {
         
 		proxy: {
 			type: 'rest',
-			url: 'http://54.251.40.149/functions/login.php',
+			url: 'http://54.251.40.149/functions/login',
             reader:{
                 type:'json',
                 rootProperty:'login',

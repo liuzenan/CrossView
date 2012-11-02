@@ -28,43 +28,5 @@ Ext.define('CrossView.controller.NavCtrl',{
 		console.log("back command");
 		var chatpage = this.getChatpage();
 		chatpage.pop();
-	},
-
-	takePhotoCommand: function(){
-
-     console.log("fuck.js");
-Ext.device.Camera.capture({
-     source: 'camera',
-     destination: 'data',
-
-
-     success: function(image) {
-          var jsonFile= {
-               file : image,
-               filename : "senchatesting.jpg"
-          };
-               alert(image);  
-          Ext.Ajax.request({
-               url: 'http://192.168.80.24/drupalsite/rest/file',
-               methode: 'POST',
-               jsonData : jsonFile,
-               success: function(response, opts) {
-                    var obj = Ext.decode(response.responseText);
-                    console.dir(obj);
-               },
-               failure: function(response, opts) {
-                    console.log('server-side failure with status code ' + response.status);
-               }
-          });
-     },
-             
-     failure: function(result) {
-          Ext.device.Notification.show({
-               title: 'Error',
-               message: result
-          });
-     }
-});
-
 	}
 });

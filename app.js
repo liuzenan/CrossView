@@ -5,8 +5,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    models:["User", "Login","Category","Conversation","Location","Post"],
-    controllers:["UserCtrl","NavCtrl"],
+    models:["User", "Login","Category","Conversation","Location","Post","Picture"],
+    controllers:["UserCtrl","NavCtrl", "PostCtrl"],
     stores:[
     'Users',
     'Invitation',
@@ -63,11 +63,14 @@ Ext.application({
         // Initialize the main view
 
        var welcomeView = {
-       		xtype:"welcomeview"
+            xtype:"welcomeview"
         };
-       this.loadCountries();
+     //  this.loadCountries();
        var homeView = {
-    		   xtype: "homeview"
+               xtype: "homeview"
+       };
+       var newPostView = {
+                xtype: "newpost"
        };
        
         Ext.Viewport.add(homeView);
@@ -75,55 +78,55 @@ Ext.application({
     },
     
     //Helper functions
-	loadCountries: function(){
-		var httpxml;
-		try
-		  {
-		  // Firefox, Opera 8.0+, Safari
-		  httpxml=new XMLHttpRequest();
-		  }
-		catch (e)
-		  {
-		  // Internet Explorer
-				  try
-							{
-						 httpxml=new ActiveXObject("Msxml2.XMLHTTP");
-							}
-					catch (e)
-							{
-						try
-					{
-					httpxml=new ActiveXObject("Microsoft.XMLHTTP");
-					 }
-						catch (e)
-					{
-					alert("Your browser does not support AJAX!");
-					return false;
-					}
-					}
-		  }
-		  
-		function stateck() 
-		{
-			if(httpxml.readyState==4)
-			{
-				
-				var countries=eval(httpxml.responseText);
-				var options = new Array();
-			
-				for (i=0;i<countries.length;i++)
-				{
-					options[i]={text: countries[i], value: countries[i]};
-				} 
-				Ext.getCmp("countries").setOptions(options);
-			}
-		}
-		
-		var url="http://54.251.40.149/functions/getCountries.php";
-		httpxml.onreadystatechange=stateck;
-		httpxml.open("GET",url,true);
-		httpxml.send(null);
-	},
+    loadCountries: function(){
+        var httpxml;
+        try
+          {
+          // Firefox, Opera 8.0+, Safari
+          httpxml=new XMLHttpRequest();
+          }
+        catch (e)
+          {
+          // Internet Explorer
+                  try
+                            {
+                         httpxml=new ActiveXObject("Msxml2.XMLHTTP");
+                            }
+                    catch (e)
+                            {
+                        try
+                    {
+                    httpxml=new ActiveXObject("Microsoft.XMLHTTP");
+                     }
+                        catch (e)
+                    {
+                    alert("Your browser does not support AJAX!");
+                    return false;
+                    }
+                    }
+          }
+          
+        function stateck() 
+        {
+            if(httpxml.readyState==4)
+            {
+                
+                var countries=eval(httpxml.responseText);
+                var options = new Array();
+            
+                for (i=0;i<countries.length;i++)
+                {
+                    options[i]={text: countries[i], value: countries[i]};
+                } 
+                Ext.getCmp("countries").setOptions(options);
+            }
+        }
+        
+        var url="http://54.251.40.149/functions/getCountries.php";
+        httpxml.onreadystatechange=stateck;
+        httpxml.open("GET",url,true);
+        httpxml.send(null);
+    },
 
     onUpdated: function() {
         Ext.Msg.confirm(

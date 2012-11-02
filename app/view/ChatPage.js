@@ -42,7 +42,6 @@ Ext.define('CrossView.view.ChatPage',{
 								'<div><span>2</span>Unread</div>',
 								'<div><span>25</span>Locations</div>'
 							),
-							itemId: 'conversationbtn',
 							store:'Conversations'
 						}
 				]			
