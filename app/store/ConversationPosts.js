@@ -1,15 +1,14 @@
 Ext.define("CrossView.store.ConversationPosts", {
 	extend: "Ext.data.Store",
-	requires: ["CrossView.model.Post"],
 	config: {
 		model: "CrossView.model.Post",
 		data:[
-			{name:'asdfasdf'},
-			{name:'asdfasdf'},
-			{name:'asdfasdf'},
-			{name:'asdfasdf'},
-			{name:'asdfasdf'},
-			{name:'asdfasdf'}
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'},
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'},
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'},
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'},
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'},
+			{username:'Alice',name:'asdfasdf asdfasdfasdfasdfasdfasdfasdfasdf asdfasdfasdfasdfasdfasdf'}
 		]
 	}
 });

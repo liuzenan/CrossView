@@ -1,14 +1,28 @@
 Ext.define('CrossView.model.Conversation', {
     extend: 'Ext.data.Model',
-    requires:['CrossView.model.User'],
     config: {
         fields: [
-            "caption"
+            "id",
+            "lastupdate",
+            "totalPost",
+            "totalUnread",
+            "numOfLocations",
+            "involved",
+            "invited",
+            "latestPost"
         ],
-        hasMany:{
-        	model: "CrossView.model.User",
-        	associationKey: 'user'
-        }
         
-	}
+		proxy: {
+			type: 'rest',
+			url: 'http://54.251.40.149/functions/conversation',
+            reader:{
+                type:'json',
+                rootProperty:'conversation',
+                messageProperty: 'message'
+            },
+            extraParams: {
+            	pageNum: 1
+            }
+		}
+    }
 });

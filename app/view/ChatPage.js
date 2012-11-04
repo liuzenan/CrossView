@@ -18,6 +18,7 @@ Ext.define('CrossView.view.ChatPage',{
 					items:[
 						{
 							xtype:'searchfield',
+							cls:'search_chat',
 							name:'search_chat',
 							placeHolder:'Search conversation'
 						},
@@ -26,23 +27,35 @@ Ext.define('CrossView.view.ChatPage',{
 							scrollable:false,
 							cls:'chat_wrapper',
 							itemTpl: new Ext.XTemplate(
-								'<div class="chat_photo" style="background:url(resources/images/post.jpg);">',
-									'<h2 class="cover_caption">{caption}</h2>',
-								'</div>',
-								'<tpl for="users">',
-									'<img src="resources/images/profile-pic.jpg" />',
-								'</tpl>',
-								'<div>',
-								'<tpl for="users">',
-									'<h4>{firstname}</h4>',
-								'</tpl>',
-								'</div>',
-								'<p>Last updated 2 hours ago near Singapore</p>',
-								'<div><span>5</span>Posts</div>',
-								'<div><span>2</span>Unread</div>',
-								'<div><span>25</span>Locations</div>'
+								'<div class="x-layout-vbox">',
+									'<div class="chat_photo" style="background:url(resources/images/post.jpg);">',
+										'<h2 class="cover_caption">{caption}</h2>',
+									'</div>',
+									'<div class="chat_profile x-layout-hbox">',
+										'<div class="chat_profile_pic x-layout-hbox">',
+											'<tpl for="user">',
+												'<img src="resources/images/profile-pic.jpg" />',
+											'</tpl>',
+										'</div>',
+										'<div class="chat_profile_text x-layout-box-item">',
+											'<div class="chat_username">',
+												'<tpl for="user">',
+													'{firstname}',
+													'{[xindex < xcount ? ", " : ""]}',
+												'</tpl>',
+											'</div>',
+											'<p>Last updated 2 hours ago near Singapore</p>',
+										'</div>',
+									'</div>',
+									'<div class="chat_stats x-layout-hbox">',
+										'<div class="x-layout-vbox"><span>5</span><span>Posts</span></div>',
+										'<div class="x-layout-vbox"><span>2</span><span>Unread</span></div>',
+										'<div class="x-layout-vbox"><span>25</span><span>Locations</span></div>',
+									'</div>',
+								'</div>'
 							),
-							store:'Conversations'
+							store:'Conversations',
+							itemId:"conversationbtn"
 						}
 				]			
 			}
@@ -54,9 +67,9 @@ Ext.define('CrossView.view.ChatPage',{
         }]
 	},
 
-    onConversationBtnTap: function(){
+    onConversationBtnTap: function(dataview,index,target,record,e,eOpts){
     	console.log("onConversationBtnTap");
-    	this.fireEvent("ConversationCmd",this);
+    	this.fireEvent("conversationCmd",this,record);
     }
 
 });

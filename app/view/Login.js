@@ -16,7 +16,7 @@ Ext.define("CrossView.view.Login", {
         scrollable:false,
         layout:{
             type:'vbox',
-            pack:'start',
+            pack:'center',
             align:'center'
         },
         items: [
@@ -29,6 +29,10 @@ Ext.define("CrossView.view.Login", {
             },
             {
                 cls:'welcome-comp',
+                xtype:'button',
+                ui:'plain',
+                height:41,
+                itemId:'facebookLogin',
                 html:'<img height=41 src="resources/images/facebook_btn.png" />'
             },
             {
@@ -45,11 +49,13 @@ Ext.define("CrossView.view.Login", {
                     items:[
                     {   
                         xtype: 'emailfield',
+                        itemId:'emailfield',
                         name: 'email',
                         placeHolder: 'Email'
                     },
                     {
                         xtype: 'passwordfield',
+                        itemId:'passwordfield',
                         name: 'password',
                         placeHolder: 'Password'                             
                     }
@@ -69,12 +75,31 @@ Ext.define("CrossView.view.Login", {
         	delegate: "#LogInBtn",
         	event: "tap",
         	fn:"onLogInBtnTap"
-        }]
+        },
+        {
+            delegate:'#emailfield',
+            event:"action",
+            fn:"onAction"
+        },
+        {
+            delegate:'#passwordfield',
+            event:"action",
+            fn:"onAction"
+        }
+
+        ]
     }, 
     
     // Capture tap events and fire them to controller as commands
     onLogInBtnTap: function(){
     	console.log("logInCommand");
     	this.fireEvent("logInCommand",this);
+    },
+
+    onAction:function(){
+        console.log("logInCommand");
+        this.fireEvent("logInCommand",this);
+        return false;
     }
+
 });

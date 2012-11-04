@@ -32,6 +32,7 @@ Ext.define("CrossView.controller.UserCtrl", {
 	
 	// Helper functions
 	activateHomeView: function(/*record*/){
+		
 		var homeView = this.getHomeView();
 		//homeView.setRecord(record);
 		Ext.Viewport.animateActiveItem(homeView, this.slideLeftTransition);
@@ -145,34 +146,35 @@ Ext.define("CrossView.controller.UserCtrl", {
 	},
 	onLogInCommand: function(){
 		console.log("onLoginCommand");
-		var login = Ext.create("CrossView.model.Login", {
+		this.login = Ext.create("CrossView.model.Login", {
 			email: "",
 			password: ""
 		});
 		var loginView = this.getLoginView(); 
 		var newValues = loginView.getValues();
-		login.set("email",newValues.email);
-		login.set("password",newValues.password);
+		this.login.set("email",newValues.email);
+		this.login.set("password",newValues.password);
 		
 		// validation
-		var errors = login.validate(); 
+		var errors = this.login.validate(); 
+		
 		
 		if(!errors.isValid()){
 			Ext.Msg.alert("", errors.getAt(0).getMessage(), Ext.emptyFn);
-			login.reject();
+			this.login.reject();
 			return;
 		}
 		
 		// server
-		login.save({
+		this.login.save({
 			failure: function(){
-				var proxy = login.getProxy(),
+				var proxy = this.login.getProxy(),
 					reader = proxy.getReader(),
 					raw = reader.rawData;
 				Ext.Msg.alert("", reader.getMessage(raw), Ext.emptyFn);
 			},
 			success: function(){
-				Ext.Msg.alert("","Login successful!", Ext.emptyFn);
+				//Ext.Msg.alert("","Login successful!", Ext.emptyFn);
 				this.activateHomeView();
 			}
 		},this);

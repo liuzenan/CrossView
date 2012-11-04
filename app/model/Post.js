@@ -6,7 +6,9 @@ Ext.define('CrossView.model.Post', {
             { name: 'image', type: 'string'},
             { name: 'category', type: 'string'},
             { name: 'geolocation', type: 'string'},
-            { name: 'inProfile'}
+            { name: 'inProfile'},
+            'name',
+            'username'
         ],
         
         proxy: {

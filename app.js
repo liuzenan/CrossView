@@ -73,10 +73,10 @@ Ext.application({
                 xtype: "newpost"
        };
        
-        Ext.Viewport.add(homeView);
+        Ext.Viewport.add([homeView,newPostView]);
 
     },
-    
+
     //Helper functions
     loadCountries: function(){
         var httpxml;

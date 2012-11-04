@@ -28,8 +28,8 @@ Ext.define('CrossView.view.MePage',{
                         xtype:'container',
                         scrollable: false,
                         tpl: new Ext.XTemplate(
-                            '<div class="user_profile">',
-                                '<img class="profile_pic" src="resources/images/logo_h.png"/>',
+                            '<div class="user_profile x-layout-vbox" style="background:url(resources/images/post.jpg)">',
+                                '<img class="profile_pic" src="resources/images/profile-pic.jpg"/>',
                                 '<h1 class="user_name">Alice Trololol</h1>',
                                 '<h2 class="user_location">New York</h2>',
                             '</div>'
@@ -42,7 +42,7 @@ Ext.define('CrossView.view.MePage',{
                         ui:'normal',
                         style:{
                             'position':'absolute',
-                            'top' : '50px',
+                            'top' : '3.2em',
                             'right' : '20px'
                         }
                     }
@@ -54,6 +54,7 @@ Ext.define('CrossView.view.MePage',{
                         scrollable: false,
                         tabBar: {
                             docked: 'top',
+                            cls:'mepage-tabbar',
                             itemId:'profile-tabbar',
                             layout: {
                                 pack: 'center'
@@ -69,7 +70,7 @@ Ext.define('CrossView.view.MePage',{
                             'position':'absolute',
                             'min-height':'100%',
                             'min-width' : '100%',
-                            'margin-top' :'60px'
+                            'margin-top' :'40px'
                         },
                         items:[
                             {
@@ -80,12 +81,14 @@ Ext.define('CrossView.view.MePage',{
                                 {
                                     xtype:'dataview',
                                     itemTpl: new Ext.Template(
-                                        '<span class="profile-post-title">3 hours ago near British Museum, UK</span>',
-                                        '<div class="profile-post-image">',
-                                        '<div class="post_stats">',
-                                            '<span class="post_like">21</span>',
-                                            '<span class="post_view">120</span>',
-                                        '</div>',
+                                        '<div class="recentpost_container x-layout-vbox">',
+                                            '<span class="profile-post-title">3 hours ago near British Museum, UK</span>',
+                                            '<div class="profile-post-image x-layout-box-item" style="background:url(resources/images/post.jpg)">',
+                                                '<div class="post_stats">',
+                                                    '<span class="post_like">21</span>',
+                                                    '<span class="post_view">120</span>',
+                                                '</div>',
+                                            '</div>',
                                         '</div>'
                                     ),
                                     store:'RecentPosts',
@@ -104,10 +107,13 @@ Ext.define('CrossView.view.MePage',{
                                 },
                                 items:[
                                 {
-                                    xtype:'dataview',
+                                    xtype:'list',
+                                    cls:'category-list',
                                     itemTpl: new Ext.Template(
+                                        '<div class="result_container">',
                                         '<h3>{name}</h3>',
-                                        '<p>234 posts, 12 people</p>'
+                                        '<p>234 posts, 12 people</p>',
+                                        '</div>'
                                     ),
                                     store:'Categories',
                                     scrollable:false
@@ -147,10 +153,10 @@ Ext.define('CrossView.view.MePage',{
             var newcardtitle = newCard.title;
             if(newcardtitle=="Recent"){
                 childcount = Ext.select('.x-dataview-container', newcardid).elements[0].childElementCount;
-                height = childcount*80;
+                height = childcount*160;
             }else if(newcardtitle=="Categories"){
-                childcount = Ext.select('.x-dataview-container', newcardid).elements[0].childElementCount;
-                height = childcount*100;
+                childcount = Ext.select('.x-list-container', newcardid).elements[0].childElementCount;
+                height = childcount*60;
             }else{
                 height = null;
             }
@@ -161,7 +167,7 @@ Ext.define('CrossView.view.MePage',{
                 height=windowheight;
             }
             console.log(windowheight);
-            this.innerElement.dom.style.height = height+215+"px";
+            this.innerElement.dom.style.height = height+300+"px";
         }
     },
 
@@ -169,8 +175,8 @@ Ext.define('CrossView.view.MePage',{
         
 
         var childcount = this.down('tabpanel').getActiveItem().down('dataview').innerElement.dom.children[0].childElementCount;
-        var height = childcount*80;
+        var height = childcount*160;
         //console.log(childcount);
-        this.innerElement.dom.style.height = height+215+"px";
+        this.innerElement.dom.style.height = height+300+"px";
     }
 });

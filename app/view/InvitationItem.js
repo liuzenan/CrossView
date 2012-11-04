@@ -23,7 +23,10 @@ Ext.define('CrossView.view.InvitationItem',{
 		image: {
 			cls:'invite-profile',
 			width:56,
-			height:56
+			height:56,
+			style:{
+				'background-size': '56px 56px'
+			}
 		},
 
 		firstName:{

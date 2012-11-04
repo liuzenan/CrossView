@@ -7,6 +7,7 @@ Ext.define('CrossView.view.ConversationPage',{
 	],
 	xtype:'conversationpage',
 	config:{
+		cls:'conversationpage',
 		navigationBar: {
 		    items: [
 		        {
@@ -28,10 +29,12 @@ Ext.define('CrossView.view.ConversationPage',{
 		            			},
 		            			items:[
 		            				{
-		            					text:'Invite Users'
+		            					text:'Invite Users',
+		            					ui:'plain'
 		            				},
 		            				{
-		            					text:'Leave Conversation'
+		            					text:'Leave Conversation',
+		            					ui:'plain'
 		            				}
 		            			]
 
@@ -56,6 +59,7 @@ Ext.define('CrossView.view.ConversationPage',{
 				items:[
 				{
 					xtype:'button',
+					cls:'newpost_btn',
 					docked:'top',
 					text:'New Post',
 					handler:function(){
@@ -67,6 +71,7 @@ Ext.define('CrossView.view.ConversationPage',{
 										text:'Take Photo',
 										scope:this,
 										handler:function(){
+											this.fireEvent("takePhotoCmd", this);
 											this.actions.hide();
 										}
 									},
@@ -74,6 +79,7 @@ Ext.define('CrossView.view.ConversationPage',{
 										text:"Upload from Library",
 										scope:this,
 										handler:function(){
+											this.fireEvent("uploadCmd", this);
 											this.actions.hide();
 										}
 									},
@@ -92,17 +98,25 @@ Ext.define('CrossView.view.ConversationPage',{
 				},
 					{
 						xtype:'dataview',
+						cls:'chat_wrapper',
 						scrollable:false,
-						itemTpl: new Ext.Template(
-								'<img class="chatpost_photo" src="" />',
-								'<div class="chatpost_profile">',
-								'<img class="chatpost_profile" src="" />',
-									'<div class="chatpost_profile_text">',
-										'<h4>Alice, Bob, David</h4>',
-										'<p>2 hours ago near Singapore</p>',
+						itemTpl: new Ext.XTemplate(
+								'<div class="x-layout-vbox">',
+									'<div class="chat_photo" style="background:url(resources/images/post.jpg);">',
 									'</div>',
-								'</div>',
-								'<h5>This is my breakfast today! How is it going for you...</h5>'
+									'<div class="chat_profile x-layout-hbox">',
+										'<div class="chat_profile_pic x-layout-hbox">',
+											'<img src="resources/images/profile-pic.jpg" />',
+										'</div>',
+										'<div class="chat_profile_text x-layout-box-item">',
+											'<div class="chat_username">',
+													'{username}',
+											'</div>',
+											'<p>Last updated 2 hours ago near Singapore</p>',
+										'</div>',
+									'</div>',
+									'<div class="post_caption">{name}</div>',
+								'</div>'
 						),
 						store:'ConversationPosts'
 					}

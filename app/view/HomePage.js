@@ -75,8 +75,8 @@ Ext.define('CrossView.view.HomePage',{
                     cls:'notif_newpost',
                     itemTpl: new Ext.Template(
                         '<div class="newpost_container x-layout-hbox">',
-                        '<img src="resources/icons/Icon.png" width="60" height="60"/>',
-                        '<span class="newpost_text">',
+                        '<img src="resources/icons/Icon.png" width="56" height="56"/>',
+                        '<span class="newpost_text x-layout-vbox">',
                             '<h4>Bob Trololol has posted to you</h4>',
                             '<p>3 hours ago near the British Museum, London</p>',
                         '</span>',

@@ -19,7 +19,7 @@ Ext.define("CrossView.view.SignUp", {
         scrollable:false,
         layout:{
             type:'vbox',
-            pack:'start',
+            pack:'center',
             align:'center'
         },
         items: [

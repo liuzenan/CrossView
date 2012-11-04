@@ -18,7 +18,7 @@ Ext.define('CrossView.view.AddUser',{
 		        {
 		            xtype: 'button',
 		            id: 'conversationbackbtn',
-		            cls:'x-button-back',
+		            ui:'back',
 		            text: 'Back',
 		            align: 'left'
 		        }
@@ -34,6 +34,7 @@ Ext.define('CrossView.view.AddUser',{
                             'min-width' : '100%'
                 },
 	            tabBar: {
+	            	cls:'adduser-tabbar',
 	                docked: 'top',
 	                layout: {
 	                    pack: 'center'
@@ -52,6 +53,7 @@ Ext.define('CrossView.view.AddUser',{
 	            		items:[
 	            			{
 	            				xtype:'searchfield',
+	            				cls:'search_chat',
 	            				name:'searchuser',
 	            				placeHolder: 'Search'
 	            			},

@@ -37,8 +37,9 @@ Ext.define('CrossView.view.NewPost',{
 			},
 			{
 				xtype:'textareafield',
+				cls:'new_inputtext',
 				name:'caption',
-				flex:1,
+				flex:0.5,
 				value:'',
 				placeHolder:'say something about the photo...'
 			},
@@ -49,24 +50,26 @@ Ext.define('CrossView.view.NewPost',{
 				},
 				items:[
 					{
-						html:'geolocation text goes here',
+						html:'Detecting current location...',
+						cls:'new_geolocation',
 						name:'geolocation',
 						value:'',
-						flex:2
+						flex:1.5
 					},
 					{
 						xtype:'selectfield',
+						cls:'new_category',
 						name:'category',
-						value:'0',
 		                options:[
-		                         {text: 'Food', value:'1'},
-		                         {text: 'Scenery', value:'2'},
-		                         {text: 'Night Life', value:'3'},
+		                         {text: 'Category', value:'1'},
+		                         {text: 'Food', value:'2'},
+		                         {text: 'Scenery', value:'3'},
 		                         {text: 'People', value:'4'},
 		                         {text: 'Sports', value:'5'},
 		                         {text: 'Buildings', value:'6'},
 		                         {text: 'Daily Life', value:'7'},
-		                         {text: 'Others', value:'8'}
+		                         {text: 'Night Life', value:'8'},
+		                         {text: 'Others', value:'9'}
 		                ],
 		                flex:1
 					}
@@ -75,11 +78,10 @@ Ext.define('CrossView.view.NewPost',{
 			{                        
 	            id:'pic_uploader',
 	            flex:2,
-	            style:{
-					'background': 'no-repeat center center fixed',
-					'-webkit-background-size': 'cover',
-					'background-size': 'cover'
-	            }
+				style:{
+					'background-size':'cover',
+					'-webkit-background-size':'cover'
+				}
 			}
 		],
 		

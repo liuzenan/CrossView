@@ -5,16 +5,23 @@ Ext.define('CrossView.view.UploadPage',{
 	],
 	xtype:'uploadpage',
 	config:{
+		layout:{
+			type:'vbox',
+			pack:'center',
+			align:'center'
+		},
 		items:[
 			{
 				xtype:'button',
+				cls:'uploadbtn',
 				text:'Take a photo',
-				ui:'action',
 				itemId:'takePhotoBtn'
 			},
 			{
 				xtype:'button',
-				text:'Upload from phone gallery'
+				cls:'uploadbtn',
+				text:'Upload an Image',
+				itemId:'galleryBtn'
 			}
 		], // items
 		
@@ -22,12 +29,20 @@ Ext.define('CrossView.view.UploadPage',{
         	delegate: "#takePhotoBtn",
         	event: "tap",
         	fn:"onTakePhotoBtnTap"
-        }] // listeners
+        },
+        {
+        	delegate: "#galleryBtn",
+        	event: "tap",
+        	fn:"onUploadBtnTap"
+        }
+        ] // listeners
 	}, // config
 	
     // Capture events and fire them to controller as commands
     onTakePhotoBtnTap: function(){
-    	console.log("takePhotoCommand");
     	this.fireEvent("takePhotoCommand",this);
+    },
+    onUploadBtnTap: function(){
+    	this.fireEvent("uploadCommand",this);
     }
 });
